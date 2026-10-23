@@ -16,7 +16,7 @@ int main(void) {
     };
     music frere_jacques = {14, frere_jacques_notes};
 
-        while (1) {
+    while (1) {
         for (int i = 0; i < frere_jacques.size_note; i++) {
             play_note(frere_jacques.notes[i].frequency);
             delay(frere_jacques.notes[i].duration);

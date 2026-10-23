@@ -11,7 +11,7 @@
 
 unsigned long timer_us = 40;
 
-unsigned int desired_period = 2000;
+unsigned int desired_period= 1000000;
 unsigned int time_since_low = 0;
 char direction = 0;
 
@@ -40,7 +40,8 @@ void floppy_handler(void) {
  * the main logic of moving the floppy driver head is performed by the floppy_handler function
  * which is called every 40 us
  */
-void * driver_loop(void * _) {
+void * driver_loop(void * arg) {
+    (void)arg;
     setup_timer(floppy_handler, timer_us);
 
     // wait and do nothing, the logic is done when the timer hits
@@ -58,15 +59,20 @@ void init_drive(){
 }
 
 void reset_position(){
+    
+    // reset the position to the one 
     digitalWrite(DIR_PIN,LOW);
     for (int i = 0; i < 100; ++i) {
         digitalWrite(STEP_PIN, HIGH);
         digitalWrite(STEP_PIN, LOW);
     }
+
+    //move the position one time from the border  
     digitalWrite(DIR_PIN, HIGH);
     digitalWrite(STEP_PIN, HIGH);
     digitalWrite(STEP_PIN, LOW);
-    digitalWrite(DIR_PIN, LOW);
+    //POURQUOI CETTE LIGNE
+    digitalWrite(DIR_PIN, LOW); 
 
 
 }
@@ -89,5 +95,5 @@ void init_driver() {
 
 void play_note(double frequency){
     int period = 1000000/frequency;
-    desired_period = period;
+    desired_period = period; 
 }
