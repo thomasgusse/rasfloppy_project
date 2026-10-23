@@ -35,11 +35,15 @@ python3 sim/analyse.py steps.log
 ```
 
 1. `make sim` compile le projet avec un faux WiringPi.
-2. `timeout -s INT 10 ./rasfloppy_sim` lance le programme pendant 10 secondes (possibilité de mofifier la durée en fonction de la musique), puis écrit `steps.log` (changez `10` selon la durée de la mélodie).
+2. `timeout -s INT 10 ./rasfloppy_sim` lance le programme pendant 10 secondes (possibilité de mofifier la durée en fonction de la musique), puis écrit `steps.log` (changez 10 selon la durée de la mélodie).
 3. `python3 sim/analyse.py steps.log` affiche les notes jouées et la position
    de la tête, et crée `sortie.wav` (à écouter).
 
 À chaque modification de `main.c`, refaire les 3 commandes.
 
-> N'utilisez **pas** `make` tout seul sur PC : il cherche le vrai WiringPi,
+> Ne pas utilisez **pas** `make` tout seul sur PC : ce dernier chercherait le vrai WiringPi,
 > qui n'existe que sur le Raspberry Pi.
+
+##Utilisation de l'IA 
+
+La simulation et le README ont été généré par IA, le but étant de se focaliser sur le fait de pouvoir jouer de la musique sur un lecteur de diquette
