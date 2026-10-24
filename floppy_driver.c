@@ -11,13 +11,16 @@
 
 unsigned long timer_us = 40;
 
-unsigned int desired_period= 1000000;
+unsigned int desired_period= 0;
 unsigned int time_since_low = 0;
 char direction = 0;
 
 int count = 0;
 
 void floppy_handler(void) {
+    if(desired_period==0){ // no notes played
+        return;
+    }
     if (count < 80) {
         if (time_since_low == 0) {
             digitalWrite(STEP_PIN, HIGH);
@@ -60,10 +63,11 @@ void init_drive(){
 
 void reset_position(){
     
-    // reset the position to the one 
+    // reset the position to the extreme one 
     digitalWrite(DIR_PIN,LOW);
     for (int i = 0; i < 100; ++i) {
         digitalWrite(STEP_PIN, HIGH);
+        delayMicroseconds(100);
         digitalWrite(STEP_PIN, LOW);
     }
 
