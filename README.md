@@ -46,4 +46,4 @@ python3 sim/analyse.py steps.log
 
 ##Utilisation de l'IA 
 
-La simulation et le README ont été généré par IA, le but étant de se focaliser sur le fait de pouvoir jouer de la musique sur un lecteur de diquette
+La simulation et le README ont été généré par IA, le but étant de se focaliser sur le fait de pouvoir jouer de la musique sur un lecteur de disquette.
