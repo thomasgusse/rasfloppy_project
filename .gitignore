@@ -1,3 +1,5 @@
 rasfloppy_sim
 *.wav
 steps.log
+main.o 
+floppy_driver.o
