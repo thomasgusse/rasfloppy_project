@@ -35,7 +35,7 @@ python3 sim/analyse.py steps.log
 ```
 
 1. `make sim` compile le projet avec un faux WiringPi.
-2. `timeout -s INT 10 ./rasfloppy_sim` lance le programme pendant 10 secondes (possibilité de mofifier la durée en fonction de la musique), puis écrit `steps.log` (changez 10 selon la durée de la mélodie).
+2. `timeout -s INT 10 ./rasfloppy_sim` lance le programme pendant 10 secondes, puis écrit `steps.log` (changez 10 selon la durée de la mélodie).
 3. `python3 sim/analyse.py steps.log` affiche les notes jouées et la position
    de la tête, et crée `sortie.wav` (à écouter).
 
