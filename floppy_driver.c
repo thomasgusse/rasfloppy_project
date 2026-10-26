@@ -21,7 +21,7 @@ void floppy_handler(void) {
     if(desired_period==0){ // no notes played
         return;
     }
-    if (count < 80) {
+    if (count < 80) { // we count the number of times there is a note played to avoid touching the border
         if (time_since_low == 0) {
             digitalWrite(STEP_PIN, HIGH);
         }
@@ -31,7 +31,7 @@ void floppy_handler(void) {
             time_since_low = 0;
             count++;
         }
-    } else {
+    } else { // we change the direction
         direction = 1 - direction;
         digitalWrite(DIR_PIN, direction);
         count = 0;
@@ -75,8 +75,6 @@ void reset_position(){
     digitalWrite(DIR_PIN, HIGH);
     digitalWrite(STEP_PIN, HIGH);
     digitalWrite(STEP_PIN, LOW);
-    //POURQUOI CETTE LIGNE
-    digitalWrite(DIR_PIN, LOW); 
 
 
 }
@@ -98,6 +96,7 @@ void init_driver() {
 }
 
 void play_note(double frequency){
+    //transform the frequency into the period (in ms)
     int period = 1000000/frequency;
     desired_period = period; 
 }
